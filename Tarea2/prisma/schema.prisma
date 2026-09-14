@@ -1,0 +1,63 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+//API 1: CARRITO DE COMPRAS
+model Carrito{
+  id        Int   @id   @default(autoincrement())
+  nombre    String
+  precio    Float
+  cantidad  Int
+}
+
+
+//API 2: SISTEMA DE VOTACIÓN
+model Opcion{
+  id      Int     @id     @default(autoincrement())
+  opcion  String  
+  votos   Int     @default(0)
+  encuestaId      Int
+  encuesta        Encuesta @relation(fields: [encuestaId], references: [id], onDelete: Cascade)
+}
+
+model Encuesta{
+  id          Int     @id @default(autoincrement())
+  pregunta    String
+  opciones    Opcion[]
+}
+
+//API 3: CONTROL DE INVENTARIO
+model Inventario{
+  id            Int     @id   @default(autoincrement())
+  producto      String  
+  stock         Int     @default(0)
+  stockMinimo   Int     @default(5)
+}
+
+//API 4: GESTOR DE TURNOS
+model Turno{
+  id           Int     @id   @default(autoincrement())
+  cliente      String  
+  servicio     String
+  estado       String  @default("esperando")
+}
+
+//API 5: RASTREADOR DE HÁBITOS
+model RegistroHabito{
+  id           Int      @id   @default(autoincrement())
+  fecha        DateTime @default(now())
+  completado   Boolean  @default(true)
+  habitoId     Int
+  habito       Habito   @relation(fields: [habitoId], references: [id], onDelete: Cascade)
+}
+model Habito{
+  id           Int     @id   @default(autoincrement())
+  nombre       String  
+  meta         String
+  registros    RegistroHabito[]
+}

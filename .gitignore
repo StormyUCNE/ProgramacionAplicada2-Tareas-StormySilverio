@@ -1,1 +1,13 @@
 node_modules/
+.env
+
+.agents/
+.claude/
+.windsurf/
+.gemini/
+skills-lock.json
+
+/src/generated/prisma
+
+.DS_Store
+Thumbs.db
