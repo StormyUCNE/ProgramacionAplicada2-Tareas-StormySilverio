@@ -5,14 +5,11 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Home() {
   return (
-    // 1. El gradiente va como contenedor principal para cubrir toda la pantalla
     <LinearGradient 
-      colors={['#0f172a', '#1e1b4b', '#000000']} // Azul oscuro a violeta profundo
+      colors={['#0f172a', '#1e1b4b', '#000000']}
       style={style.container}
     >
       <SafeAreaView style={style.safeArea}>
-        
-        {/* 2. BlurView actúa como una tarjeta de cristal */}
         <BlurView tint="dark" intensity={40} style={style.card}>
           
           <View style={style.imageContainer}>
@@ -30,9 +27,7 @@ export default function Home() {
               <Text style={style.careerText}>Ing. Sistemas y Cómputos</Text>
             </View>
           </View>
-
         </BlurView>
-
       </SafeAreaView>
     </LinearGradient>
   );
@@ -44,13 +39,13 @@ const style = StyleSheet.create({
   },
   safeArea: {
     flex: 1,
-    justifyContent: "center", // Centra la tarjeta en la pantalla
+    justifyContent: "center",
     paddingHorizontal: 20,
   },
   card: {
     borderRadius: 24,   
     borderWidth: 1,
-    borderColor: "rgba(255, 255, 255, 0.15)", // Borde sutil transparente (efecto cristal)
+    borderColor: "rgba(255, 255, 255, 0.15)",
     padding: 24,
     gap: 30,
     overflow: "hidden",
@@ -67,7 +62,7 @@ const style = StyleSheet.create({
     borderRadius: 20
   },
   infoContainer: {
-    alignItems: "center", // Centra los textos
+    alignItems: "center",
     gap: 12,
   },
   nameText: {
@@ -76,12 +71,12 @@ const style = StyleSheet.create({
     fontWeight: "bold",
   },
   idText: {
-    color: "rgba(255, 255, 255, 0.6)", // Blanco semi-transparente
+    color: "rgba(255, 255, 255, 0.6)",
     fontSize: 18,
     letterSpacing: 2,
   },
   badge: {
-    backgroundColor: "rgba(16, 185, 129, 0.2)", // Verde esmeralda muy transparente
+    backgroundColor: "rgba(16, 185, 129, 0.2)",
     paddingVertical: 8,
     paddingHorizontal: 16,
     borderRadius: 12,
@@ -90,7 +85,7 @@ const style = StyleSheet.create({
     marginTop: 10,
   },
   careerText: {
-    color: "#34d399", // Texto verde esmeralda brillante
+    color: "#34d399",
     fontSize: 16,
     fontWeight: "600",
   },
