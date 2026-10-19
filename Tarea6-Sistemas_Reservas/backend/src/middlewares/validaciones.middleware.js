@@ -31,15 +31,6 @@ export const validarLogin =(req, res, next)=>{
     next();
 }
 
-export const validarCreacionTarea =(req, res, next)=>{
-    if(!req.body.titulo)
-        return res.status(400).json({error: "Título es un campo requerido"});
-    if(req.body.titulo.trim().length > 35)
-        return res.status(400).json({error: "Título es muy largo, Max. 35 caracteres"});
-    next();
-}
-
-
 export const validarCreacionYEdicionServicio =(req, res, next)=>{
     if(!req.body.nombre || req.body.nombre.trim() === "")
         return res.status(400).json({error: "Nombre es un campo requerido"});
