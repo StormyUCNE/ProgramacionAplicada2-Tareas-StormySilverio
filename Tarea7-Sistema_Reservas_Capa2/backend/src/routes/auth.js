@@ -4,7 +4,7 @@ import { validarLogin, validarRegistro } from "../middlewares/validaciones.js";
 
 const router = Router();
 
-router.post("/registro", validarRegistrom, registro);
+router.post("/registro", validarRegistro, registro);
 router.post("/login", validarLogin, login);
 
 export default router;
