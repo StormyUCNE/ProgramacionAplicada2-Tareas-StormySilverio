@@ -6,7 +6,6 @@ import { validarToken } from './middlewares/auth.js';
 
 const app = express();
 app.use(express.json());
-app.use(loggerMiddleware);
 const PORT = process.env.PORT || 3000;
 
 app.use("/auth", authRoutes);
