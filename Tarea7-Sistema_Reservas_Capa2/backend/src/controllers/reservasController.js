@@ -23,7 +23,7 @@ export const createReserva = async (req, res, next) => {
 
 export const getMisReservas = async (req, res, next) => {
   try {
-    const misReservas = await prisma.reserva.findMany({where: req.usuario.id, include:{servicio: true}});
+    const misReservas = await prisma.reserva.findMany({where:{usuarioId: req.usuario.id}, include:{servicio: true}});
     return res.json({misReservas});
   } catch (error) {
     next(error);
