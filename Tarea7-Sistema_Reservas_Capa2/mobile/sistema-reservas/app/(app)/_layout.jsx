@@ -64,6 +64,7 @@ export default function TabLayout() {
         name="servicios"
         options={{
           title: "Inicio",
+          popToTopOnBlur: true,
           tabBarIcon: ({ color, focused }) => (
             <View style={focused ? s.iconStyleActive : s.iconStyle}>
               <Ionicons
