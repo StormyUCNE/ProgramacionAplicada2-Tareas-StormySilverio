@@ -45,6 +45,8 @@ export const changeEstado = async (req, res, next) => {
     const existeReserva = await prisma.reserva.findUnique({where:{id}});
     if(!existeReserva)
         return res.status(404).json({error:"Reserva no encontrada"});
+    if(existeReserva.estado !== "pendiente")
+      return res.status(400).json({error:"Solo se pueden completar reservas pendientes"});
     const reservaActualizada = await prisma.reserva.update({where: {id}, data:{estado: "completada"}});
     return res.json({reservaActualizada});
   } catch (error) {
@@ -58,8 +60,10 @@ export const deleteReserva = async (req, res, next) => {
     const existeReserva = await prisma.reserva.findUnique({where:{id}});
     if(!existeReserva)
         return res.status(404).json({error:"Reserva no encontrada"});
-    await prisma.reserva.delete({where: {id}});
-    return res.json({message: "Reserva eliminada"});
+    if(existeReserva.estado !== "pendiente")
+      return res.status(400).json({error:"Solo se pueden cancelar reservas pendientes"});
+    const reservaActualizada = await prisma.reserva.update({where: {id}, data:{estado: "cancelada"}});
+    return res.json({reservaActualizada});
   } catch (error) {
     next(error);
   }
