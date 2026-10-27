@@ -52,7 +52,7 @@ export const validarCreacionYEdicionServicio =(req, res, next)=>{
 }
 
 export const validarId =(req, res, next)=>{
-    if(parseInt(req.params.id) < 1)
+    if(isNaN(parseInt(req.params.id)) || parseInt(req.params.id) < 1)
         return res.status(400).json({error: "Id debe ser parámetro númerico entero positivo"});
     next();
 }

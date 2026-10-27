@@ -3,9 +3,11 @@ import authRoutes from './routes/auth.js'
 import servicesRoutes from './routes/servicios.js'
 import reservasRoutes from './routes/reservas.js'
 import { validarToken } from './middlewares/auth.js';
+import { loggerMiddleware } from './middlewares/loggerMiddleware.js';
 
 const app = express();
 app.use(express.json());
+app.use(loggerMiddleware);
 const PORT = process.env.PORT || 3000;
 
 app.use("/auth", authRoutes);
