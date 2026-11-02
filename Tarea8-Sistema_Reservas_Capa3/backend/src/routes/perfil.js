@@ -4,5 +4,5 @@ import { validarEdicionPerfil } from '../middlewares/validaciones.js';
 
 const router = Router();
 router.put("/perfil", validarEdicionPerfil, updatePerfil);
-router.get("/perfil", validarEdicionPerfil, getPerfil);
+router.get("/perfil", getPerfil);
 export default router;
