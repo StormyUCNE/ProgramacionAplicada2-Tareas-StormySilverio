@@ -8,12 +8,12 @@ export const createReserva = async (req, res, next) => {
 
     const hoy = new Date();
     hoy.setHours(0, 0, 0, 0);
-    /*if (fechaReserva <= hoy)
+    if (fechaReserva <= hoy)
       return res
         .status(400)
         .json({
           error: "Debes reservar en una fecha futura, posterior a la de hoy",
-        });*/
+        });
     const fechaInicio = new Date(fecha);
     fechaInicio.setHours(0, 0, 0, 0);
 
