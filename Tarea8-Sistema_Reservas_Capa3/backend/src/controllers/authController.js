@@ -4,11 +4,11 @@ import jwt from 'jsonwebtoken'
 export const registro =async(req, res, next)=>{
     try {
         const {nombre, email, password, rol} = req.body;
-        const existeUsuario = await prisma.usuario.findUnique({where: {email}});
+        const existeUsuario = await prisma.usuario.findUnique({where: {email: email.toLowerCase().trim()}});
         if(existeUsuario)
             return res.status(400).json({error: "Email ya existe"});
         const hash = await bcrypt.hash(password, 10);
-        const usuario = await prisma.usuario.create({data: {nombre, email, password: hash, rol: rol || "cliente"}});
+        const usuario = await prisma.usuario.create({data: {nombre, email: email.toLowerCase().trim(), password: hash, rol: rol || "cliente"}});
         const token = jwt.sign(
             {id: usuario.id, nombre: usuario.nombre, email: usuario.email, rol: usuario.rol},
             process.env.JWT_SECRET,
@@ -23,7 +23,7 @@ export const registro =async(req, res, next)=>{
 export const login =async(req, res, next)=>{
     try {
         const {email, password} = req.body;
-        const existeUsuario = await prisma.usuario.findUnique({where: {email}});
+        const existeUsuario = await prisma.usuario.findUnique({where: {email: email.toLowerCase().trim()}});
         if(!existeUsuario)
             return res.status(401).json({error: "Credenciales incorrectas"});
         const valido = await bcrypt.compare(password, existeUsuario.password);
