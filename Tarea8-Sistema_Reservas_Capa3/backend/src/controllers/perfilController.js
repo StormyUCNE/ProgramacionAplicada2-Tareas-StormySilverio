@@ -9,3 +9,11 @@ export const updatePerfil = async (req, res, next) => {
     next(error);
   }
 };
+export const getPerfil = async (req, res, next) => {
+  try {
+    const usuario = await prisma.usuario.findUnique({where:{id: req.usuario.id}});
+    return res.json({ id: usuario.id, nombre: usuario.nombre, email: usuario.email, rol: usuario.rol});
+  } catch (error) {
+    next(error);
+  }
+};
