@@ -28,7 +28,7 @@ export const createReserva = async (req, res, next) => {
           .json({ error: "No puede reservar un servicio en la misma fecha" });
     }
     const reserva = await prisma.reserva.create({
-      data: { fecha, hora, servicioId, usuarioId: req.usuario.id },
+      data: { fecha, hora, servicioId, usuarioId: req.usuario.id }, include:{servicio:true}
     });
     return res.status(201).json({ reserva });
   } catch (error) {
