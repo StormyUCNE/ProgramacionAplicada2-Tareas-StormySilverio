@@ -1,8 +1,10 @@
-import { setNotificationHandler } from "expo-notifications/build/NotificationsHandler";
-import { requestPermissionsAsync } from "expo-notifications/build/NotificationPermissions";
-import { scheduleNotificationAsync } from "expo-notifications/build/scheduleNotificationAsync";
-import { SchedulableTriggerInputTypes } from "expo-notifications/build/Notifications.types";
-import { cancelScheduledNotificationAsync } from "expo-notifications";
+import { 
+  setNotificationHandler, 
+  requestPermissionsAsync, 
+  scheduleNotificationAsync, 
+  cancelScheduledNotificationAsync,
+  SchedulableTriggerInputTypes 
+} from "expo-notifications";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 setNotificationHandler({
   handleNotification: async () => ({
