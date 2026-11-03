@@ -13,7 +13,7 @@ import { useEffect } from "react";
 import { tienePermiso } from "../../services/notifications.js";
 import { useAuth } from "../../context/AuthContext.jsx";
 export const unstable_settings = {
-  anchor: "reservas",
+  anchor: "servicios",
 }
 export default function TabLayout() {
   const {token, isCheckingSession} = useAuth();
@@ -72,7 +72,7 @@ export default function TabLayout() {
           title: "Perfil",
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
-              name={focused ? "home" : "home-outline"}
+              name={focused ? "person" : "person-outline"}
               color={focused ? "#60A5FA" : color}
               size={24}
             />
